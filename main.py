@@ -201,7 +201,7 @@ async def serverinfo(ctx):
 	                      timestamp=ctx.message.created_at,
 	                      color=discord.Color.red())
 	embed.set_thumbnail(url="https://i.imgur.com/7dyGz0S.jpg")
-	embed.add_field(name="Owner", value="blacky#5204")
+	embed.add_field(name="Owner", value=guild.owner)
 	embed.add_field(name="Server ID", value=guild.id)
 	embed.add_field(name="Members", value=guild.member_count)
 	embed.add_field(name="Channels", value=len(guild.channels))
@@ -283,7 +283,7 @@ async def weather(ctx, *, args):
 
 		await ctx.send(embed=embed)
 	except:
-		pass
+		await ctx.send("Location not found")
 
 
 @bot.command()
@@ -312,17 +312,6 @@ async def word(ctx, *, args):
 	embed.set_footer(text=f"Used by {ctx.author}", icon_url=ctx.author.avatar_url)
 
 	await ctx.send(embed=embed)
-
-
-@bot.command()
-async def omri(ctx):
-	"""
-	Returns an important piece of information about Omri
-	"""
-
-	await ctx.send("Omri is the 4x Consecutive Holder of the "
-	               'Funniest Person In B40'
-	               " Title.")
 
 
 @bot.command()
@@ -393,18 +382,6 @@ async def punch(ctx, *, user: discord.Member = None):
 
 	embed = discord.Embed(title=f"{ctx.author.name} punches {user.name}")
 	embed.set_image(url=tenor("anime-punch"))
-
-	await ctx.send(embed=embed)
-
-
-@bot.command()
-async def kick(ctx, *, user: discord.Member = None):
-	"""
-	Returns kick gif: kick @user
-	"""
-
-	embed = discord.Embed(title=f"{ctx.author.name} kicks {user.name}")
-	embed.set_image(url=tenor("anime-kick"))
 
 	await ctx.send(embed=embed)
 
